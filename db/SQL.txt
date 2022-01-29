@@ -1,0 +1,1 @@
+update Measurements SET date = substr(trim(date),7,4) || '-' || substr(trim(date),4,2) || '-' || substr(trim(date),1,2)

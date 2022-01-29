@@ -1,0 +1,337 @@
+@font-face {
+    font-family: 'Roboto1';
+    src: url('../fonts/Roboto/Roboto.woff2') format('woff2'),
+         url('../fonts/Roboto/Roboto.woff')  format('woff');	
+    font-weight: normal;
+    font-style: normal;         
+}
+@font-face {
+    font-family: 'Roboto1';
+    src: url('../fonts/Roboto/Robotobold.woff2') format('woff2'),
+         url('../fonts/Roboto/Robotobold.woff')  format('woff');
+    font-weight: bold;     
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Magneto1';
+    src: url('../fonts/Magneto/MagnetoBold.woff2') format('woff2'),
+         url('../fonts/Magneto/MagnetoBold.woff')  format('woff'),
+         url('../fonts/Magneto/MagnetoBold.ttf')  format('truetype');
+    font-weight: bold;     
+    font-style: normal;
+}
+
+body {
+    font-family: Roboto1;
+    font-weight: bold;
+    /* font-style: italic; */
+    background-color: #C6C1C1;
+}
+
+/* Верхняя панель */
+.Header_Panel {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 60px;
+    font-family: Roboto1;
+    font-weight: bold;
+    background-color:#505050;    
+}
+.Logo1 {
+    position: absolute;
+    top: 2px;
+    left: 97px;
+    font-family: Magneto1;
+    font-weight: bold;
+    font-size: 48px;
+    color: #dcf30c;
+}
+.Logo2 {
+    position: absolute;
+    top: 20px;
+    left: 150px;
+    font-style: italic;
+    font-size: 26px;
+    color: #ffffff;
+}
+.Logo3 {
+    position: absolute;
+    top: 0px;
+    left: 192px;
+    font-size: 48px;
+    color: #1393ce;
+}
+.hh {
+    position: absolute;
+    left: 380px;
+    top: 15px;
+    font-size: 24px; 
+    color: #B5ACAC; 
+}
+.hh1 {
+    top: 20px;
+    left: 1680px;
+    font-size: 18px;
+}
+.Seach_box {
+    box-sizing: border-box;
+    position: absolute;
+    left: 1350px;
+    top: 15px;
+    width: 250px;
+    height: 30px;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 16px;        
+    color: #777777;
+    background-color: #B5ACAC;
+    border: 5px;
+    border-color: #0C0C0C;
+    border-radius: 20px;
+    padding: 5px 0 0 12px;
+}
+.search_icon {
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+}
+
+/* Левая панель меню */
+.Menu_Panel {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 60px;
+    /* height: 975px; */
+    height: 100%;
+    background-color:#353535;
+}
+
+.menu_buttons {
+    position: relative;
+    left: 0px;
+    top: 60px;
+    width: 60px;
+    height: 60px;
+    border-width: 0px;
+    padding: 0px;
+    background-color: #353535;
+    fill:#aea6a8;
+    /* transition: all 0.3s;*/
+    padding-left: 3px;   
+}
+.menu_buttons:hover {
+    fill:white;    
+}
+.menu_buttons:active {       
+    outline: none;
+}
+.menu_buttons:focus {       
+    outline: none;    
+}
+.menu_buttons.active {    
+    fill:white;    
+    border-left: 3px solid white;
+    padding-left: 0px;    
+}
+.menu_buttons::-moz-focus-inner {
+    border: 0;
+}
+
+.update_btn {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 60px;
+    height: 60px;
+    border-width: 0px;
+    padding: 0px;
+    background-color: #375F7B;
+    fill:#aea6a8;
+    /* transition: all 0.3s;*/
+    padding-left: 3px;
+      
+}
+.update_btn:hover {
+    fill:white;     
+}
+.update_btn:active {    
+    background-color: rgb(134, 64, 64);    
+    outline: none;
+}
+.update_btn:focus {
+    outline: none;
+}
+.update_btn::-moz-focus-inner {
+    border: 0;
+}
+
+.login_btn {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 60px;
+    height: 60px;
+    border-width: 0px;
+    padding: 0px;
+    background-color: #353535;
+    fill:#aea6a8;
+    /* transition: all 0.3s;*/
+    padding-left: 3px;
+}
+.login_btn:hover {
+    fill:white;     
+}
+.login_btn:active {        
+    outline: none;
+}
+.login_btn:focus {        
+    outline: none;
+}
+.login_btn::-moz-focus-inner {
+    border: 0;
+}
+
+.OKR_Panel {
+    position: absolute;
+    left: 60px;
+    top: 60px;
+    width: 230px;
+    /* height: 915px; */
+    height: calc(100% - 3.75rem);
+    background-color:#181414;    
+}
+.OKR_buttons {    
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 230px;
+    height: 30px;
+    border-width: 0px;
+    padding-left: 10px;
+    font-family: Roboto1;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+    color: #aea6a8;
+    background-color:#181414;
+}
+.OKR_buttons:hover {
+    color: white;
+}
+.OKR_buttons:active {
+    outline: none;
+}
+.OKR_buttons:focus {
+    outline: none;    
+}
+.OKR_buttons::-moz-focus-inner {
+    border: 0;
+}    
+.OKR_buttons.active {
+    color: white;
+    background-color:#328E89;        
+}
+/* **************************** */
+
+/* Таблица */
+.Table_div {
+    position: absolute;
+    left: 290px;
+    top: 60px;
+    max-height: calc(100vh - 3.8rem);
+    overflow-y: auto;
+}
+table thead,
+table tbody {
+    font-family: Roboto1;
+    font-weight: normal;
+    font-size: 15px;
+    color: #000000;
+}
+table th, td {
+    /* border: 0px solid #909090; */
+    padding: 2px 7px 2px 7px;
+}
+table th {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    height: 50px;
+    font-size: 17px;
+    background:#909090;
+}
+.Cell_Chip td {
+    background: #ffe5c3;
+}
+.Cell_Wafer td {
+    background: #dfe3ff;
+}
+.Cell_ETT:nth-child(odd) {
+    background: #C6C1C1;
+}
+.Cell_ETT:nth-child(even) {
+    background: #beb2b2;
+}
+.Bold {
+    font-weight: bold;
+}
+.Green {
+    color: #0d8d58;
+    font-weight: bold;
+}
+.Italic {
+    color: #0a2e90;
+    font-size: 14px;
+    /* font-style: italic; */
+} 
+
+/* **************************** */
+
+/* Окно авторизации */
+.login_form {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 300px;
+    height: 185px;
+    border-radius: 10px;
+    background: rgb(51, 105, 177, 0.9);
+    text-align: center;
+    padding-top: 15px;
+    font-family: Roboto1;
+    font-size: 21px;
+    color: white;
+    box-shadow: 15px 15px 15px #333;
+}
+input[type="text"], 
+input[type="password"],
+input[type="submit"] {
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border-width: 0px;    
+    font-size: 16px;
+}
+#submit {
+    width: 162px;
+    height: 33px;
+    color: white;   
+    background: #11a37f;    
+}
+#Gray_background {
+    background-color: rgb(1, 1, 1, 0.6);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+/* **************************** */
