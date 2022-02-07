@@ -322,7 +322,7 @@ function Update_Btn_Click() {
 
 function sortTable(Col) {
     if (Col == Last_Col) { Sort_Dir = !Sort_Dir; } // Если новый столбец -
-    else { Sort_Dir = 0; }                         // сортируем по возрастанию
+    else { Sort_Dir = 1; }                         // сортируем по возрастанию
     Last_Col = Col;
 
     var tableData = document.getElementById('tbl').getElementsByTagName('tbody').item(0);
@@ -350,13 +350,19 @@ function Submit_Click() {
     if (val == "") { return }
 
     Access_Level = 0;
-    if (val == 1404) { Access_Level = 1 } // User pass
+    if (val == 1404)   { Access_Level = 1 } // User pass
     if (val == 135351) { Access_Level = 2 } // Admin pass
 
     document.getElementById("Gray_background").style.visibility = "hidden";    
     document.getElementById("log_form").style.visibility        = "hidden";
 
     if (Access_Level == 0) { Clear_All() }
+    if (Access_Level == 1) 
+    { 
+        Clear_All();
+        var m_btn1 = document.getElementsByClassName("menu_buttons");
+        m_btn1[0].click(); // Нажмём 1-ю кнопку меню
+    }
 }
 
 function Background_Click() {
