@@ -1,4 +1,4 @@
-var Access_Level = 1; // уровень доступа: 0 - нет; 1 - user; 2 - admin
+var Access_Level = 0; // уровень доступа: 0 - нет; 1 - user; 2 - admin
 var Current_Mode = 0; // Текущий режим: 1,11 - измерения; 2,22 - аттестации; 3 - ЭТТ 
 var Last_Col = true;  // Последняя отсортированная колонка
 var Sort_Dir = 0;     // Последнее направление сортировки (чтобы при повторном нажатии менять направлении сортировки)
@@ -350,7 +350,7 @@ function Submit_Click() {
     if (val == "") { return }
 
     Access_Level = 0;
-    if (val == 123456) { Access_Level = 1 } // User pass
+    if (val == 1404) { Access_Level = 1 } // User pass
     if (val == 135351) { Access_Level = 2 } // Admin pass
 
     document.getElementById("Gray_background").style.visibility = "hidden";    
