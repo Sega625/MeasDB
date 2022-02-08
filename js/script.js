@@ -340,7 +340,7 @@ function sortTable(Col) {
 
 function Login_Btn_Click() {
     document.getElementById("Gray_background").style.visibility = "visible";
-    document.getElementById("log_form").style.visibility        = "visible";
+    document.getElementById("log_form").style.visibility = "visible";
     document.getElementById("password").value = "";
     document.getElementById("password").focus();
 }
@@ -354,12 +354,11 @@ function Submit_Click() {
     if (val == 135351) { Access_Level = 2 } // Admin pass
 
     document.getElementById("Gray_background").style.visibility = "hidden";    
-    document.getElementById("log_form").style.visibility        = "hidden";
+    document.getElementById("log_form").style.visibility = "hidden";
+    Clear_All()
 
-    if (Access_Level == 0) { Clear_All() }
     if (Access_Level == 1) 
     { 
-        Clear_All();
         var m_btn1 = document.getElementsByClassName("menu_buttons");
         m_btn1[0].click(); // Нажмём 1-ю кнопку меню
     }
@@ -367,7 +366,7 @@ function Submit_Click() {
 
 function Background_Click() {
     document.getElementById("Gray_background").style.visibility = "hidden";    
-    document.getElementById("log_form").style.visibility        = "hidden";
+    document.getElementById("log_form").style.visibility = "hidden";
 }
 
 //////////////// * Для фиксирования заголовка таблицы * ////////////////
