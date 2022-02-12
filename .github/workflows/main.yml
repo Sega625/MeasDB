@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Deploy
-      - name: ''
-        run: cd www/measdb.ru
       - name: 'Deploy' 
-        run: git checkout -f main
+        run: echo "Hello, GitHub Deploy!"
+      #- name: ''
+      #  run: cd www/measdb.ru
+      #- name: 'Deploy' 
+      #  run: git checkout -f main
