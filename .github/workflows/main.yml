@@ -10,5 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Deploy
-      - run: cd www/measdb.ru 
-      - run: git checkout -f main
+      - name: ''
+        run: cd www/measdb.ru
+      - name: 'Deploy' 
+        run: git checkout -f main
