@@ -11,7 +11,7 @@ jobs:
     steps:
       # Deploy
       - name: 'Deploy'
-        uses: appleboy/ssh-action@main
+        uses: appleboy/ssh-action@master
         with:
           host: 'vip41.hostiman.ru' 
           username: 's218953'
