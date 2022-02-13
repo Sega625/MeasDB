@@ -10,8 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Deploy
-      - name: 'Deploy' 
-        run: echo "Hello, GitHub Deploy!"
+      - name: 'Deploy'
+        uses: appleboy/ssh-action@master
+        with:
+          host: 'vip41.hostiman.ru' 
+          username: 's218953'
+          key: ${{ secrets.KEY }}
+          port: 8228
+          script: ls -l
+        #run: echo "Hello, GitHub Deploy!"
       #- name: ''
       #  run: cd www/measdb.ru
       #- name: 'Deploy' 
