@@ -17,9 +17,4 @@ jobs:
           username: 's218953'
           key: ${{ secrets.KEY }}
           port: 8228
-          script: ls -l
-        #run: echo "Hello, GitHub Deploy!"
-      #- name: ''
-      #  run: cd www/measdb.ru
-      #- name: 'Deploy' 
-      #  run: git checkout -f main
+          script: 'cd www/measdb.ru, ls -l'
