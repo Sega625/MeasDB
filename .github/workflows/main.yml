@@ -19,4 +19,4 @@ jobs:
           port: 8228
           script: |
             cd www/measdb.ru
-            ls -l
+            git checkout -f main 
