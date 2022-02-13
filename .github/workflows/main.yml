@@ -17,4 +17,4 @@ jobs:
           username: 's218953'
           key: ${{ secrets.KEY }}
           port: 8228
-          script: 'cd www\measdb.ru, ls -l'
+          script: 'ls www/measdb.ru'
