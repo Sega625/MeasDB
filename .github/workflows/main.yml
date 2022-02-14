@@ -13,10 +13,10 @@ jobs:
       - name: 'Deploy'
         uses: appleboy/ssh-action@master
         with:
-          host: 'vip41.hostiman.ru' 
+          host: 'vip41.hostiman.ru'
+          port: 8228 
           username: 's218953'
-          key: ${{ secrets.KEY }}
-          port: 8228
+          key: ${{ secrets.KEY }}          
           script: |
             cd www/measdb.ru
             git pull 
