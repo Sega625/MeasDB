@@ -19,4 +19,5 @@ jobs:
           key: ${{ secrets.KEY }}          
           script: |
             cd www/measdb.ru
-            git pull 
+            git fetch origin main
+            git reset --hard FETCH_HEAD 
