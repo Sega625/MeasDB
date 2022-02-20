@@ -53,10 +53,10 @@ function Add_Table(N, OKR_Data) {
             table_html += "<tbody>";
             for (var i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
-                    table_html += "<tr class='Cell_Chip'>";
+                    table_html += "<tr class='Cell_Chip' onclick=ClickString(11,"+i+")>";
                 }
                 else {
-                    table_html += "<tr class='Cell_Wafer'>";
+                    table_html += "<tr class='Cell_Wafer' onclick=ClickString(11,"+i+")>";
                 }
                 table_html += "<td align='center'>"+OKR_Data[i]["Code"]      +"</td>";
                 table_html += "<td>"+OKR_Data[i]["DeviceName"]+"</td>";
@@ -67,7 +67,7 @@ function Add_Table(N, OKR_Data) {
                 table_html += "<td align='center' class='Green'>"+OKR_Data[i]["NOKChips"]  +"</td>";
                 table_html += "<td>"+OKR_Data[i]["MeasEqip"]  +"</td>";
                 table_html += "<td>"+OKR_Data[i]["Date"]      +"</td>";
-                table_html += "<td class='Italic'>"+OKR_Data[i]["Notes"]     +"</td>";
+                table_html += "<td class='Blue'>"  +OKR_Data[i]["Notes"]     +"</td>";
                 table_html += "</tr>";
             }
             table_html += "</tbody>";
@@ -99,10 +99,10 @@ function Add_Table(N, OKR_Data) {
             table_html += "<tbody>";
             for (var i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
-                    table_html += "<tr class='Cell_Chip'>";
+                    table_html += "<tr class='Cell_Chip' onclick=ClickString(1,"+i+")>";
                 }
                 else {
-                    table_html += "<tr class='Cell_Wafer'>";
+                    table_html += "<tr class='Cell_Wafer' onclick=ClickString(1,"+i+")>";
                 }
                 table_html += "<td align='center'>"+OKR_Data[i]["Code"]       +"</td>";
                 table_html += "<td>"+OKR_Data[i]["MPW"]        +"</td>";
@@ -120,7 +120,7 @@ function Add_Table(N, OKR_Data) {
                 table_html += "<td align='center' class='Bold'>" +OKR_Data[i]["NChips"]     +"</td>";
                 table_html += "<td align='center' class='Green'>"+OKR_Data[i]["NOKChips"]   +"</td>";
                 table_html += "<td>"+OKR_Data[i]["Date"]       +"</td>";
-                table_html += "<td class='Italic'>"+OKR_Data[i]["Notes"]      +"</td>";
+                table_html += "<td class='Blue'>"  +OKR_Data[i]["Notes"]      +"</td>";
                 table_html += "</tr>";
             }
             table_html += "</tbody>";
@@ -139,10 +139,10 @@ function Add_Table(N, OKR_Data) {
             table_html += "<tbody>";
             for (var i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
-                    table_html += "<tr class='Cell_Chip'>";
+                    table_html += "<tr class='Cell_Chip' onclick=ClickString(22,"+i+")>";
                 }
                 else {
-                    table_html += "<tr class='Cell_Wafer'>";
+                    table_html += "<tr class='Cell_Wafer' onclick=ClickString(22,"+i+")>";
                 }
                 table_html += "<td>"+OKR_Data[i]["DeviceName"] +"</td>";
                 table_html += "<td>"+OKR_Data[i]["MeasEqip"]   +"</td>";
@@ -172,10 +172,10 @@ function Add_Table(N, OKR_Data) {
             table_html += "<tbody>";
             for (var i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
-                    table_html += "<tr class='Cell_Chip'>";
+                    table_html += "<tr class='Cell_Chip' onclick=ClickString(2,"+i+")>";
                 }
                 else {
-                    table_html += "<tr class='Cell_Wafer'>";
+                    table_html += "<tr class='Cell_Wafer' onclick=ClickString(2,"+i+")>";
                 }
                 table_html += "<td>"+OKR_Data[i]["DeviceName"] +"</td>";
                 table_html += "<td>"+OKR_Data[i]["DeviceDescr"]+"</td>";
@@ -186,7 +186,7 @@ function Add_Table(N, OKR_Data) {
                 table_html += "<td>"+OKR_Data[i]["ProgSize"]   +"</td>";
                 table_html += "<td>"+OKR_Data[i]["CRC32"]      +"</td>";
                 table_html += "<td>"+OKR_Data[i]["Date"]       +"</td>";
-                table_html += "<td class='Italic'>"+OKR_Data[i]["Notes"] +"</td>";
+                table_html += "<td class='Blue'>"  +OKR_Data[i]["Notes"]+"</td>";
                 table_html += "</tr>";
             }
             table_html += "</tbody>";
@@ -206,13 +206,13 @@ function Add_Table(N, OKR_Data) {
 
             table_html += "<tbody>";
             for (var i = 0; i < OKR_Data.length; i++) {
-                table_html += "<tr class='Cell_ETT'>";
+                table_html += "<tr class='Cell_ETT' onclick=ClickString(3,"+i+")>";
                 table_html += "<td>"+OKR_Data[i]["DeviceName"]+"</td>";
                 table_html += "<td align='center'>"+OKR_Data[i]["NPins"]        +"</td>";
                 table_html += "<td align='center'>"+OKR_Data[i]["NChips"]       +"</td>";
                 table_html += "<td align='center'>"+OKR_Data[i]["NBoards"]      +"</td>";
                 table_html += "<td align='center'>"+OKR_Data[i]["NChipsOnBoard"]+"</td>";
-                table_html += "<td class='Italic'>"+OKR_Data[i]["Note"]         +"</td>";
+                table_html += "<td class='Blue'>"  +OKR_Data[i]["Note"]         +"</td>";
                 table_html += "</tr>";
             }
             table_html += "</tbody>";
@@ -336,6 +336,10 @@ function sortTable(Col) {
             if (X) { tableData.insertBefore(rowData.item(j+1), rowData.item(j)); }
         }
     }
+}
+
+function ClickString(Type, NStr) {
+    alert(Type+'  '+NStr);
 }
 
 function Login_Btn_Click() {

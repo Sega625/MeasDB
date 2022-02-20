@@ -25,6 +25,10 @@ body {
     font-family: Roboto1;
     font-weight: bold;
     /* font-style: italic; */
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
     background-color: #C6C1C1;
 }
 
@@ -242,7 +246,7 @@ body {
     left: 290px;
     top: 60px;
     max-height: calc(100vh - 3.8rem);
-    overflow-y: auto;
+    overflow-y: auto;   
 }
 table thead,
 table tbody {
@@ -251,31 +255,50 @@ table tbody {
     font-size: 15px;
     color: #000000;
 }
-table th, td {
-    /* border: 0px solid #909090; */
-    padding: 2px 7px 2px 7px;
-}
 table th {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
     cursor: pointer;
     height: 50px;
+    padding: 2px 7px 2px 7px;
     font-size: 17px;
     background:#909090;
 }
+table th:hover {
+    background: #868686;
+}
+table td {
+    position: relative;    
+    padding: 2px 7px 2px 7px;
+}
+table td::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);    
+    /* border-top: 2px solid orange;
+	border-bottom: 2px solid orange;     */
+}
+table tr:hover td::before {
+    content: "";
+}
+/* table tr:hover td { */
+    /* color: red; */
+    /* background: #eef1d1;     */
+/* } */
+/* table tr:active td
+{ 
+  background-color: #632a2a;
+  color: #fff;
+}      */
 .Cell_Chip td {
     background: #ffe5c3;
 }
 .Cell_Wafer td {
     background: #dfe3ff;
 }
-.Cell_ETT:nth-child(odd) {
-    background: #C6C1C1;
-}
-.Cell_ETT:nth-child(even) {
-    background: #beb2b2;
+.Cell_ETT td {
+    background: #c5d4c5;
 }
 .Bold {
     font-weight: bold;
@@ -284,11 +307,11 @@ table th {
     color: #0d8d58;
     font-weight: bold;
 }
-.Italic {
+.Blue {
     color: #0a2e90;
     font-size: 14px;
     /* font-style: italic; */
-} 
+}
 
 /* **************************** */
 
