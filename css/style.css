@@ -265,27 +265,13 @@ table th {
 table th:hover {
     background: #868686;
 }
-table td {
-    position: relative;    
-    padding: 2px 7px 2px 7px;
+table td {    
+    padding: 2px 7px 2px 7px; 
 }
-table td::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.1);    
-    /* border-top: 2px solid orange;
-	border-bottom: 2px solid orange;     */
-}
-table tr:hover td::before {
-    content: "";
-}
-/* table tr:hover td { */
+table tr:hover td {
     /* color: red; */
-    /* background: #eef1d1;     */
-/* } */
+    background: #eef1d1;    
+}
 /* table tr:active td
 { 
   background-color: #632a2a;

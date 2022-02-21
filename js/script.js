@@ -339,7 +339,7 @@ function sortTable(Col) {
 }
 
 function ClickString(Type, NStr) {
-    alert(Type+'  '+NStr);
+    // alert(Type+'  '+NStr);    
 }
 
 function Login_Btn_Click() {
