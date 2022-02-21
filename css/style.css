@@ -270,13 +270,8 @@ table td {
 }
 table tr:hover td {
     /* color: red; */
-    background: #eef1d1;    
+    background: #f6c6c6;    
 }
-/* table tr:active td
-{ 
-  background-color: #632a2a;
-  color: #fff;
-}      */
 .Cell_Chip td {
     background: #ffe5c3;
 }

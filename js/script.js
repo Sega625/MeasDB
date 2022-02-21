@@ -3,6 +3,13 @@ var Current_Mode = 0; // Текущий режим: 1,11 - измерения; 2
 var Last_Col = true;  // Последняя отсортированная колонка
 var Sort_Dir = 0;     // Последнее направление сортировки (чтобы при повторном нажатии менять направлении сортировки)
 
+document.oncontextmenu = function (e) {
+    return false;
+}
+document.addEventListener( "contextmenu", function(e) {
+    // alert(e);
+})
+
 document.addEventListener("DOMContentLoaded", () => {
     Login_Btn_Click();
 });
