@@ -29,14 +29,17 @@ switch ($par1) {
       $sql = "SELECT * FROM ETT WHERE OKR_Name = '".$par2."' ORDER BY DeviceName";
       break;   
 
+   case "PASS":
+      $sql = "SELECT * FROM Passwords WHERE pass = '".$par2."'";
+      break;
    default:
       ; 
 }
 
 $res = $db->query($sql);
-// print_r($res);
+//  print_r($res);
 while ($row = $res->fetchArray()) {
-   $arr[] = $row;
+      $arr[] = $row;
 }
 
 $db->close();

@@ -19,7 +19,15 @@ function GetDataFromBD(param1, param2) {
     xhttp.open("POST", "php/db.php", false); // Пока синхронный запрос
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('param1="'+param1+'"&param2="'+param2+'"');
-    return JSON.parse(xhttp.responseText);
+    var a1 = []; // Для пароля
+    a1[0] = [];  //
+    try {
+        a1 = JSON.parse(xhttp.responseText);
+    } catch (error) {
+        a1[0][1] = 0;
+    }
+    // alert(a1[0][1]);
+    return a1
 }
 
 function Clear_All() {
@@ -360,13 +368,11 @@ function Submit_Click() {
     var val = document.getElementById("password").value;
     if (val == "") { return }
 
-    Access_Level = 0;
-    if (val == 1404)   { Access_Level = 1 } // User pass
-    if (val == 135351) { Access_Level = 2 } // Admin pass
-
+    Access_Level = GetDataFromBD("PASS", val)[0][1];
+    
     document.getElementById("Gray_background").style.visibility = "hidden";    
     document.getElementById("log_form").style.visibility = "hidden";
-    Clear_All()
+    Clear_All();
 
     if (Access_Level == 1) 
     { 
