@@ -3,59 +3,55 @@ var Current_Mode = 0; // Текущий режим: 1,11 - измерения; 2
 var Last_Col = true;  // Последняя отсортированная колонка
 var Sort_Dir = 0;     // Последнее направление сортировки (чтобы при повторном нажатии менять направлении сортировки)
 
-// document.oncontextmenu = function (e) {
-//     return false;
+document.oncontextmenu = function (e) {
+    return false;
+}
+
+// document.onclick = hideMenu;
+// document.oncontextmenu = rightClick;
+
+// function hideMenu() {
+//     document.getElementById("contextMenu").style.display = "none"
 // }
 
-document.onclick = hideMenu;
-document.oncontextmenu = rightClick;
+// function rightClick(e) {
+//     e.preventDefault();
 
-function hideMenu() {
-    document.getElementById("contextMenu").style.display = "none"
-}
+//     if (document.getElementById("contextMenu").style.display == "block") 
+//         hideMenu();
 
-function rightClick(e) {
-    e.preventDefault();
+//     var menu = document.getElementById("contextMenu")
 
-    if (document.getElementById("contextMenu").style.display == "block") 
-        hideMenu();
-
-    var menu = document.getElementById("contextMenu")
-
-    menu.style.display = 'block';
-    menu.style.left = e.pageX+"px";
-    menu.style.top  = e.pageY+"px";    
-}
+//     menu.style.display = 'block';
+//     menu.style.left = e.pageX+"px";
+//     menu.style.top  = e.pageY+"px";    
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
     Login_Btn_Click();
 });
 
 function GetDataFromBD(param1, param2) {
-    var xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
     xhttp.open("POST", "php/db.php", false); // Пока синхронный запрос
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('param1="'+param1+'"&param2="'+param2+'"');
-<<<<<<< HEAD
-    var a1 = [[0],[0],[0],[0]]; // Для пароля    
+    let a1 = [[0],[0],[0],[0]]; // Для пароля    
     try {
         a1 = JSON.parse(xhttp.responseText);
     } catch (error) {
         a1[0][1] = 0;
     }
-    // alert(a1[0][1]);
-    return a1
-=======
-    return JSON.parse(xhttp.responseText);
->>>>>>> d5a2a306901126b210e5408ae71d964661490182
+    // alert(a1);
+    return a1;    
 }
 
 function Clear_All() {
     ///////////////// * Удалим меню названий ОКРов * ////////////////////
 
-    var bt = document.getElementsByClassName("OKR_buttons");
-    var N = bt.length;
-    for (var i = 0; i < N; i++) { bt[0].parentNode.removeChild(bt[0]); }
+    let bt = document.getElementsByClassName("OKR_buttons");
+    let N = bt.length;
+    for (let i = 0; i < N; i++) { bt[0].parentNode.removeChild(bt[0]); }
 
     //////////////////////// * Удалим таблицу * /////////////////////////
 
@@ -374,9 +370,7 @@ function Submit_Click() {
     const val = document.getElementById("password").value;
     if (val == "") { return }
 
-    Access_Level = 0;
-    if (val == 1404)   { Access_Level = 1 } // User pass
-    if (val == 135351) { Access_Level = 2 } // Admin pass
+    Access_Level = GetDataFromBD("PASS", val)[0][1]; // Получим пароль из БД
 
     document.getElementById("Gray_background").style.visibility = "hidden";    
     document.getElementById("log_form").style.visibility = "hidden";
