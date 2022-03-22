@@ -370,7 +370,8 @@ function Submit_Click() {
     const val = document.getElementById("password").value;
     if (val == "") { return }
 
-    Access_Level = GetDataFromBD("PASS", val)[0][1]; // Получим пароль из БД
+    let Arr = GetDataFromBD("PASS", val); // Получим пароль из БД
+    Access_Level = Arr[0][1];
 
     document.getElementById("Gray_background").style.visibility = "hidden";    
     document.getElementById("log_form").style.visibility = "hidden";
