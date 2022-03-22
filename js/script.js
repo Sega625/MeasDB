@@ -3,12 +3,29 @@ var Current_Mode = 0; // Текущий режим: 1,11 - измерения; 2
 var Last_Col = true;  // Последняя отсортированная колонка
 var Sort_Dir = 0;     // Последнее направление сортировки (чтобы при повторном нажатии менять направлении сортировки)
 
-document.oncontextmenu = function (e) {
-    return false;
+// document.oncontextmenu = function (e) {
+//     return false;
+// }
+
+document.onclick = hideMenu;
+document.oncontextmenu = rightClick;
+
+function hideMenu() {
+    document.getElementById("contextMenu").style.display = "none"
 }
-document.addEventListener( "contextmenu", function(e) {
-    // alert(e);
-})
+
+function rightClick(e) {
+    e.preventDefault();
+
+    if (document.getElementById("contextMenu").style.display == "block") 
+        hideMenu();
+
+    var menu = document.getElementById("contextMenu")
+
+    menu.style.display = 'block';
+    menu.style.left = e.pageX+"px";
+    menu.style.top  = e.pageY+"px";    
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     Login_Btn_Click();
@@ -19,6 +36,7 @@ function GetDataFromBD(param1, param2) {
     xhttp.open("POST", "php/db.php", false); // Пока синхронный запрос
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('param1="'+param1+'"&param2="'+param2+'"');
+<<<<<<< HEAD
     var a1 = [[0],[0],[0],[0]]; // Для пароля    
     try {
         a1 = JSON.parse(xhttp.responseText);
@@ -27,6 +45,9 @@ function GetDataFromBD(param1, param2) {
     }
     // alert(a1[0][1]);
     return a1
+=======
+    return JSON.parse(xhttp.responseText);
+>>>>>>> d5a2a306901126b210e5408ae71d964661490182
 }
 
 function Clear_All() {
@@ -65,7 +86,7 @@ function Add_Table(N, OKR_Data) {
             table_html += "</thead>";
 
             table_html += "<tbody>";
-            for (var i = 0; i < OKR_Data.length; i++) {
+            for (let i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
                     table_html += "<tr class='Cell_Chip' onclick=ClickString(11,"+i+")>";
                 }
@@ -111,7 +132,7 @@ function Add_Table(N, OKR_Data) {
             table_html += "</thead>";
 
             table_html += "<tbody>";
-            for (var i = 0; i < OKR_Data.length; i++) {
+            for (let i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
                     table_html += "<tr class='Cell_Chip' onclick=ClickString(1,"+i+")>";
                 }
@@ -151,7 +172,7 @@ function Add_Table(N, OKR_Data) {
             table_html += "</thead>";
 
             table_html += "<tbody>";
-            for (var i = 0; i < OKR_Data.length; i++) {
+            for (let i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
                     table_html += "<tr class='Cell_Chip' onclick=ClickString(22,"+i+")>";
                 }
@@ -184,7 +205,7 @@ function Add_Table(N, OKR_Data) {
             table_html += "</thead>";
 
             table_html += "<tbody>";
-            for (var i = 0; i < OKR_Data.length; i++) {
+            for (let i = 0; i < OKR_Data.length; i++) {
                 if (OKR_Data[i]["Type"] > 4) {
                     table_html += "<tr class='Cell_Chip' onclick=ClickString(2,"+i+")>";
                 }
@@ -219,7 +240,7 @@ function Add_Table(N, OKR_Data) {
             table_html += "<thead>";
 
             table_html += "<tbody>";
-            for (var i = 0; i < OKR_Data.length; i++) {
+            for (let i = 0; i < OKR_Data.length; i++) {
                 table_html += "<tr class='Cell_ETT' onclick=ClickString(3,"+i+")>";
                 table_html += "<td>"+OKR_Data[i]["DeviceName"]+"</td>";
                 table_html += "<td align='center'>"+OKR_Data[i]["NPins"]        +"</td>";
@@ -236,11 +257,27 @@ function Add_Table(N, OKR_Data) {
     document.getElementById('Table_div1').innerHTML = table_html;
 }
 
+/////////////// * Добавим меню с названиями ОКРов * ////////////////
+function Add_Menu_Btns(prm1) {
+    let Arr, OKR_Panel, btn;
+    Arr = GetDataFromBD(prm1, "NONE"); // Получим результат из БД
+    OKR_Panel = document.getElementById("OKR_Pan");
+    for (let i = 0; i < Arr.length; i++) {
+        btn = document.createElement("button");
+        btn.className = "OKR_buttons";
+        btn.style.top = i*30+"px";
+        btn.textContent = Arr[i]["OKR_Name"];
+        btn.addEventListener("click", OKR_Btn_Click);
+        // btn.onclick = OKR_Btn_Click;
+        OKR_Panel.appendChild(btn);
+    }
+}
+
 function Menu_Btn_Click(event, id) {
     if (Access_Level == 0) return 0;
 
-    var m_btn = document.getElementsByClassName("menu_buttons");
-    for (i = 0; i < m_btn.length; i++) { m_btn[i].className = m_btn[i].className.replace(" active", ""); } 
+    let m_btn = document.getElementsByClassName("menu_buttons");
+    for (let i = 0; i < m_btn.length; i++) { m_btn[i].className = m_btn[i].className.replace(" active", ""); }
     event.currentTarget.className += " active";
 
     switch (id) {
@@ -252,50 +289,20 @@ function Menu_Btn_Click(event, id) {
     }
     
     Clear_All();
-    var Arr, OKR_Panel, btn;
+
     switch (Current_Mode) {
         case 11:
-        case 1 :            
-            Arr = GetDataFromBD("OKR_MEAS", "NONE"); // Получим результат из БД           
-            OKR_Panel = document.getElementById("OKR_Pan");
-            for (i = 0; i < Arr.length; i++) {
-                btn = document.createElement("button");
-                btn.className = "OKR_buttons";
-                btn.style.top = i*30+"px";
-                btn.textContent = Arr[i]["OKR_Name"];
-                btn.addEventListener("click", OKR_Btn_Click);
-                // btn.onclick = OKR_Btn_Click;
-                OKR_Panel.appendChild(btn);
-            }                     
+        case 1 :
+            Add_Menu_Btns("OKR_MEAS");
             break;
             
         case 22:
         case 2 :
-            Arr = GetDataFromBD("OKR_ATTEST", "NONE");            
-            OKR_Panel = document.getElementById("OKR_Pan");
-            for (i = 0; i < Arr.length; i++) {
-                btn = document.createElement("button");
-                btn.className = "OKR_buttons";
-                btn.style.top = i*30+"px";
-                btn.textContent = Arr[i]["OKR_Name"];
-                btn.addEventListener("click", OKR_Btn_Click);
-                // btn.onclick = OKR_Btn_Click;
-                OKR_Panel.appendChild(btn);
-            }          
+            Add_Menu_Btns("OKR_ATTEST");
             break;
 
         case 3:
-            Arr = GetDataFromBD("OKR_ETT", "NONE");            
-            OKR_Panel = document.getElementById("OKR_Pan");
-            for (i = 0; i < Arr.length; i++) {
-                btn = document.createElement("button");
-                btn.className = "OKR_buttons";
-                btn.style.top = i*30+"px";
-                btn.textContent = Arr[i]["OKR_Name"];
-                btn.addEventListener("click", OKR_Btn_Click);
-                // btn.onclick = OKR_Btn_Click;
-                OKR_Panel.appendChild(btn);
-            }                      
+            Add_Menu_Btns("OKR_ETT");
             break;
     }
 }
@@ -303,11 +310,11 @@ function Menu_Btn_Click(event, id) {
 function OKR_Btn_Click(event) {
     if (Access_Level == 0) return 0;
 
-    var m_btn = document.getElementsByClassName("OKR_buttons");
-    for (var i = 0; i < m_btn.length; i++) { m_btn[i].className = m_btn[i].className.replace(" active", ""); }
+    let m_btn = document.getElementsByClassName("OKR_buttons");
+    for (let i = 0; i < m_btn.length; i++) { m_btn[i].className = m_btn[i].className.replace(" active", ""); }
     event.currentTarget.className += " active";
 
-    var ReqStr;
+    let ReqStr;
     switch (Current_Mode) {
         case 11:
         case 1:
@@ -325,7 +332,7 @@ function OKR_Btn_Click(event) {
 
     }
 
-    var Arr = GetDataFromBD(ReqStr, event.currentTarget.textContent); // Получим результат из БД 
+    let Arr = GetDataFromBD(ReqStr, event.currentTarget.textContent); // Получим результат из БД
 
     Add_Table(Current_Mode, Arr); // Выведем в таблицу
 }
@@ -339,13 +346,13 @@ function sortTable(Col) {
     else { Sort_Dir = 1; }                         // сортируем по возрастанию
     Last_Col = Col;
 
-    var tableData = document.getElementById('tbl').getElementsByTagName('tbody').item(0);
-    var rowData = tableData.getElementsByTagName('tr');            
-    for(var i = 0; i < rowData.length-1; i++) {
-        for(var j = 0; j < rowData.length-(i+1); j++) {
-            var A1 = Number(rowData.item(j).getElementsByTagName('td').item(Col).innerHTML.replace(/[^0-9\.]+/g, ""));
-            var A2 = Number(rowData.item(j+1).getElementsByTagName('td').item(Col).innerHTML.replace(/[^0-9\.]+/g, ""));
-            var X = A1 < A2;
+    let tableData = document.getElementById('tbl').getElementsByTagName('tbody').item(0);
+    let rowData = tableData.getElementsByTagName('tr');
+    for(let i = 0; i < rowData.length-1; i++) {
+        for(let j = 0; j < rowData.length-(i+1); j++) {
+            let A1 = Number(rowData.item(j).getElementsByTagName('td').item(Col).innerHTML.replace(/[^0-9\.]+/g, ""));
+            let A2 = Number(rowData.item(j+1).getElementsByTagName('td').item(Col).innerHTML.replace(/[^0-9\.]+/g, ""));
+            let X = A1 < A2;
             if (Sort_Dir == 0) { X = A1 > A2; }
             if (X) { tableData.insertBefore(rowData.item(j+1), rowData.item(j)); }
         }
@@ -364,18 +371,20 @@ function Login_Btn_Click() {
 }
 
 function Submit_Click() {
-    var val = document.getElementById("password").value;
+    const val = document.getElementById("password").value;
     if (val == "") { return }
 
-    Access_Level = GetDataFromBD("PASS", val)[0][1];
-    
+    Access_Level = 0;
+    if (val == 1404)   { Access_Level = 1 } // User pass
+    if (val == 135351) { Access_Level = 2 } // Admin pass
+
     document.getElementById("Gray_background").style.visibility = "hidden";    
     document.getElementById("log_form").style.visibility = "hidden";
-    Clear_All();
+    Clear_All()
 
     if (Access_Level == 1) 
-    { 
-        var m_btn1 = document.getElementsByClassName("menu_buttons");
+    {
+        const m_btn1 = document.getElementsByClassName("menu_buttons");
         m_btn1[0].click(); // Нажмём 1-ю кнопку меню
     }
 }
