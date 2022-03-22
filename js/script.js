@@ -19,8 +19,7 @@ function GetDataFromBD(param1, param2) {
     xhttp.open("POST", "php/db.php", false); // Пока синхронный запрос
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('param1="'+param1+'"&param2="'+param2+'"');
-    var a1 = []; // Для пароля
-    a1[0] = [];  //
+    var a1 = [[0],[0],[0],[0]]; // Для пароля    
     try {
         a1 = JSON.parse(xhttp.responseText);
     } catch (error) {

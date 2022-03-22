@@ -44,14 +44,6 @@ while ($row = $res->fetchArray()) {
 
 $db->close();
 
-// if ($par1 == "MEAS" || $par1 == "ATTEST" || $par1 == "ETT") {
-//    for ($i = 0; $i < count($arr); $i++) { 
-//       for ($j = 0; $j < count($arr[$i]); $j++) { 
-//          if ($arr[$j][$i] == "") { $arr[$j][$i] = " "; }
-//       }
-//    }
-// }  
-
 //echo json_decode($_REQUEST);
 echo json_encode($arr);
 
