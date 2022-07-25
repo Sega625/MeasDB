@@ -25,10 +25,10 @@ body {
     font-family: Roboto1;
     font-weight: bold;
     /* font-style: italic; */
-    -moz-user-select: none;
+    /* -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
-    user-select: none;
+    user-select: none; */
     background-color: #C6C1C1;
 }
 
