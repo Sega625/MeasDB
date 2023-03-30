@@ -188,16 +188,17 @@ function Add_Table(N, OKR_Data) {
         case 2:
             table_html += "<thead>";
             table_html += "<tr>";
-            table_html += "<th onclick=sortTable(0)> Изделие         </th>";
-            table_html += "<th onclick=sortTable(1)> Описание        </th>";
-            table_html += "<th onclick=sortTable(2)> Изм. система    </th>";
-            table_html += "<th onclick=sortTable(3)> Зонд            </th>";
-            table_html += "<th onclick=sortTable(4)> № свидетельства </th>";
-            table_html += "<th onclick=sortTable(5)> Программа       </th>";            
-            table_html += "<th onclick=sortTable(6)> Размер          </th>";
-            table_html += "<th onclick=sortTable(7)> Контр. сумма    </th>";
-            table_html += "<th onclick=sortTable(8)> Дата            </th>";
-            table_html += "<th onclick=sortTable(9)> Примечание      </th>";
+            table_html += "<th onclick=sortTable(0)>  Изделие         </th>";
+            table_html += "<th onclick=sortTable(1)>  Описание        </th>";
+            table_html += "<th onclick=sortTable(2)>  Изм. система    </th>";
+            table_html += "<th onclick=sortTable(3)>  Зонд            </th>";
+            table_html += "<th onclick=sortTable(4)>  № свидетельства </th>";
+            table_html += "<th onclick=sortTable(5)>  Программа       </th>";            
+            table_html += "<th onclick=sortTable(6)>  Размер          </th>";
+            table_html += "<th onclick=sortTable(7)>  Контр. сумма    </th>";
+            table_html += "<th onclick=sortTable(8)>  Дата            </th>";
+            table_html += "<th onclick=sortTable(9)>  Примечание      </th>";
+            table_html += "<th onclick=sortTable(10)> Время контроля  </th>";
             table_html += "</tr>";
             table_html += "</thead>";
 
@@ -219,6 +220,7 @@ function Add_Table(N, OKR_Data) {
                 table_html += "<td>"+OKR_Data[i]["CRC32"]      +"</td>";
                 table_html += "<td>"+OKR_Data[i]["Date"]       +"</td>";
                 table_html += "<td class='Blue'>"  +OKR_Data[i]["Notes"]+"</td>";
+                table_html += "<td>"+OKR_Data[i]["OkChipTime"] +"</td>";
                 table_html += "</tr>";
             }
             table_html += "</tbody>";
