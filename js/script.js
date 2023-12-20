@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function GetDataFromBD(param1, param2) {
     const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "php/db.php", false); // Пока синхронный запрос
+    xhttp.open("POST", "php/MD_db.php", false); // Пока синхронный запрос
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send('param1="'+param1+'"&param2="'+param2+'"');
     let a1 = [[0],[0],[0],[0]]; // Для пароля    
